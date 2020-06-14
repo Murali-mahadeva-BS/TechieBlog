@@ -13,7 +13,8 @@ django-crispy-forms = "*"
 django-allauth = "*"
 whitenoise = "*"
 gunicorn = "*"
-psycopg2-binary = "*"
+psycopg2-binary = "==2.8.3"
+django-on-heroku = "*"
 
 [requires]
 python_version = "3.7"

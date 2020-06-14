@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +26,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG')
 # DEBUG = 1
-ALLOWED_HOSTS = ['techie-explorer.heroku.com','localhost', '127.0.0.1:8000']
+ALLOWED_HOSTS = ['techie-explorer.herokuapp.com','localhost', '127.0.0.1:8000']
 
 ENVIRONMENT = os.environ.get('ENVIRONMENT')
 # ENVIRONMENT = 'development'
@@ -186,3 +187,5 @@ SUMMERNOTE_THEME = 'bs4'
 CACHE_MIDDLEWARE_ALIAS = 'default'
 CACHE_MIDDLEWARE_SECONDS = 604800
 CACHE_MIDDLEWARE_KEY_PREFIX = ''
+
+django_heroku.settings(locals())
