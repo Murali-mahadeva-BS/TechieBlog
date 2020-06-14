@@ -20,14 +20,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'n*3-k_5xx7vh*iyw(i7%rue_8d_zyva)u!dav8*uudrt5jp3()'
-# SECRET_KEY = os.environ.get('SECRET_KEY')
+# SECRET_KEY = 'n*3-k_5xx7vh*iyw(i7%rue_8d_zyva)u!dav8*uudrt5jp3()'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = os.environ.get('DEBUG')
-DEBUG = 1
+DEBUG = os.environ.get('DEBUG')
+# DEBUG = 1
 ALLOWED_HOSTS = ['techie-explorer.heroku.com','localhost', '127.0.0.1:8000']
-# ENVIRONMENT = os.environ.get('ENVIRONMENT')
-ENVIRONMENT = 'development'
+
+ENVIRONMENT = os.environ.get('ENVIRONMENT')
+# ENVIRONMENT = 'development'
 if ENVIRONMENT == 'production':
     SECURE_BROWSER_XSS_FILTER = True  # new
     SECURE_SSL_REDIRECT = True  # new
