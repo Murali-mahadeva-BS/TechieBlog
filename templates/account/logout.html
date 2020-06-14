@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load crispy_forms_tags %} {% block title %}LogOut{% endblock %} {% block content %}
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block title %}Logout{% endblock %} {% block content %}
 <div class="container mt-5">
   <p class="ccolor h4">Are you sure you want to log out?</p>
   <form method="post" action="{% url 'account_logout' %}">
