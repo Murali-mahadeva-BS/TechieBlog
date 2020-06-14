@@ -60,7 +60,7 @@ INSTALLED_APPS = [
 
 SITE_ID = 1 #djnago-allauth
 MIDDLEWARE = [
-    'django.middleware.cache.UpdateCacheMiddleware', # new
+    # 'django.middleware.cache.UpdateCacheMiddleware', # new
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -68,7 +68,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware', # new
+    # 'django.middleware.cache.FetchFromCacheMiddleware', # new
 ]
 
 ROOT_URLCONF = 'techieblog.urls'
@@ -184,8 +184,8 @@ SUMMERNOTE_THEME = 'bs4'
 
 
 #cache settings
-CACHE_MIDDLEWARE_ALIAS = 'default'
-CACHE_MIDDLEWARE_SECONDS = 604800
-CACHE_MIDDLEWARE_KEY_PREFIX = ''
+# CACHE_MIDDLEWARE_ALIAS = 'default'
+# CACHE_MIDDLEWARE_SECONDS = 604800
+# CACHE_MIDDLEWARE_KEY_PREFIX = ''
 
 django_on_heroku.settings(locals())
