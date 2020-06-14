@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {% block title %} Search-Result {% endblock %} {%block content %}
+ {% if search_result %} {% for post in search_result %}
+<div class="mt-5">
+   <div class="postcard card d-flex flex-row mb-4 ml-4">
+    <div style="border-right:1px solid #4ecca3" class="d-flex align-items-center">
+        <a href="{{post.get_absolute_url}}">
+          <img
+            class="title-img"
+            src="{{post.title_img.url }}"
+            alt="title_img"
+          />
+        </a>
+      </div>
+
+        <div class="ml-2 p-2">
+          <div>
+          <a class="greena h4" href="{{ post.get_absolute_url }}"
+            >{{ post.title }}</a
+          ></div>
+          <div class="mt-2">
+          <a
+            class="btn post-btn "
+            href="{{post.get_absolute_url}}"
+            ><small >Explore</small></a
+          ></div>
+        </div> 
+      </div>
+
+
+</div>
+{% endfor %} {% else %}
+<div class="mt-5 ml-5">
+  <h3 class="greena">Sorry no results found</h3>
+</div>
+
+{% endif %} {% endblock content %}

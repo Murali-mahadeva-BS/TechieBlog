@@ -1,0 +1,25 @@
+{% extends 'base.html' %}{% load crispy_forms_tags %} {% block title %}Login{% endblock %}
+
+<!-- main content -->
+{% block content %}
+
+<div class="card usercard mt-5">
+  <div class="card-header usercard-header text-center mb-3">
+    Login
+  </div>
+
+  <div class="card-body">
+    <form method="post">
+      {% csrf_token %} {{form|crispy}}
+      <button class="btn btn-block" type="submit">
+        Login <i class="fa fa-sign-in" aria-hidden="true"></i>
+      </button>
+    </form>
+  </div>
+  <div class="card-footer usercard-footer">
+    Dont have an account?
+    <a class="greena" href="{% url 'account_signup' %}"> Signup</a>
+  </div>
+</div>
+
+{% endblock %}

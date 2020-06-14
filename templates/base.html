@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %} {% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Teko&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+  </head>
+  <body>
+        <nav class="navbar navbar-expand-lg navbar-static-top">
+        <a class="navbar-brand" href="{% url 'home' %}" data-toggle="tooltip" title="Logo" data-placement="bottom">TechieExplorer</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+        <i class="fa fa-bars toggle-icon" aria-hidden="true"></i>
+          <!-- <span class="navbar-toggler-icon toggle-icon">H</span> -->
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+              <a {% if request.path == '/' %}class= "nav-link navlink active"{% else %}class="nav-link navlink"{% endif %} href="{% url 'home' %}" data-toggle="tooltip" title="Home" data-placement="bottom">Home 
+                </a>
+            </li>
+            <li class="nav-item">
+              <a {% if 'posts/' in request.path%}class= "nav-link navlink active"{% else %}class="nav-link navlink"{% endif %}  href="{% url 'posts' %}" data-toggle="tooltip" title="Posts" data-placement="bottom">All Posts</a>
+            </li>
+          </ul>
+        
+          <form class="form-inline" method="GET" action="{% url 'search-result' %}">
+           <div class="input-group mb-3">
+        <input type="search" class="form-control custom-search-bar" placeholder="search" aria-label="search" name='q'>
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary search-btn" type="submit">
+            <i class="fa fa-search cyan-text" aria-hidden="true"></i>
+          </button>
+        </div>
+        </div>   
+           </form>
+           
+        <ul class="navbar-nav ml-2">
+          {% if user.is_authenticated %}
+          {% if user.is_superuser %}
+          <li class="nav-item ">
+            <a class="nav-link userlink" href="/iam-murali-open-door-happy/" > 
+              <i class="fa fa-user" aria-hidden="true"></i> Admin
+            </a>
+          </li>
+          {% endif %}
+            <li class="nav-item ">
+              <a  {% if 'profile/' in request.path%}class= "nav-link userlink active "{% else %}class="nav-link userlink"{% endif %} href="{% url 'profile' %}" data-toggle="tooltip" title="User Profile" data-placement="bottom"> 
+                <i class="fa fa-user" aria-hidden="true"></i> Profile
+              </a>
+            </li>
+            <li class="nav-item">
+              <a {% if 'logout/' in request.path%}class= "nav-link userlink active "{% else %}class="nav-link userlink"{% endif %}  href="{% url 'account_logout' %}" data-toggle="tooltip" title="Logout" data-placement="bottom">Logout 
+                <i class="fa fa-sign-out" aria-hidden="true"></i> </a>
+            </li>
+            {% else %}
+            <li class="nav-item ">
+              <a {% if 'signup/' in request.path%}class= "nav-link userlink active"{% else %}class="nav-link userlink"{% endif %}  href="{% url 'account_signup' %}" data-toggle="tooltip" title="Signup" data-placement="bottom">Signup 
+                </a>
+            </li>
+            <li class="nav-item ">
+              <a {% if 'login/' in request.path%}class= "nav-link userlink active"{% else %}class="nav-link userlink"{% endif %}  href="{% url 'account_login' %}" data-toggle="tooltip" title="Login" data-placement="bottom">Login</a>
+            </li>
+            {% endif %}
+          </ul>
+ 
+
+      </div>
+          
+      </nav>
+    
+
+
+
+ <div class="container-fluid mt-1">
+      <!-- messages section -->
+      {% if messages %}
+      {% for message in messages %}
+        <div class="mt-2">
+      <div class="alert alert-{{message.tags}}"  role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span></button>
+    <span >{{message}}</span>
+    </div>
+    </div>
+    {% endfor %}
+
+      {% endif %}
+<!-- messages section end   -->
+
+
+      {% block content %} {% endblock content %}
+    </div>
+
+
+
+
+
+
+
+
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="{% static 'js/particles.js' %}"></script>
+    <script src="{% static 'js/app.js' %}"></script>
+    <script src="{% static 'js/base.js' %}"></script>
+  </body>
+</html>

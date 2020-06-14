@@ -1,0 +1,68 @@
+{% extends 'base.html' %}}{% load static %} {% block title %} POSTS {% endblock %} {% block content %} 
+{% for post in posts %}
+
+<div class="mt-5">
+  <!-- <div class="postcard card mb-4 ml-4">
+    <div class="row">
+      <div class="col-3 title-img-col d-flex align-items-center">
+        <a href="{{post.get_absolute_url}}">
+          <img
+            class="title-img"
+            src="{{post.title_img.url }}"
+            alt="title_img"
+          />
+        </a>
+      </div>
+
+      <div class="col-9 pt-2 d-flex flex-column">
+        <div>
+          <a class="greena h4" href="{{ post.get_absolute_url }}"
+            >{{ post.title }}</a
+          ><br />
+        </div>
+        <div>
+          <a
+            class="btn btn-block align-self-end"
+            href="{{post.get_absolute_url}}"
+            >Explore</a
+          >
+        </div> -->
+        <!-- <a class="" href="{{ post.get_absolute_url }}" ><i class="fa fa-arrow-circle-o-up fa-2x explore-icon " aria-hidden="true"></i> </a> -->
+        <!-- <p>{{post.description}}</p> -->
+      <!-- </div>
+    </div>
+  </div> -->
+
+
+
+
+ <div class="postcard card d-flex flex-row mb-4 ml-4">
+    <div style="border-right:1px solid #4ecca3" class="d-flex align-items-center">
+        <a href="{{post.get_absolute_url}}">
+          <img
+            class="title-img"
+            src="{{post.title_img.url }}"
+            alt="title_img"
+          />
+        </a>
+      </div>
+
+        <div class="ml-2 p-2">
+          <div>
+          <a class="greena h4" href="{{ post.get_absolute_url }}"
+            >{{ post.title }}</a
+          ></div>
+          <div class="mt-2">
+          <a
+            class="btn post-btn "
+            href="{{post.get_absolute_url}}"
+            ><small >Explore</small></a
+          ></div>
+        </div> 
+      </div>
+
+
+
+</div>
+{% endfor %} 
+{% endblock content %}

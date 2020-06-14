@@ -1,0 +1,18 @@
+{% extends 'base.html' %}{% load crispy_forms_tags %} {% block title
+%}Profile{% endblock %}
+
+<!-- main content -->
+{% block content %}
+
+<div class="card usercard mt-5">
+  <div class="card-header usercard-header text-center mb-3">
+    Profile
+  </div>
+  <div class="card-body">
+    <span class="greena">Username : </span>{{user.username}} <br />
+    <span class="greena">Email: </span>{{user.email}} <br />
+    {{user.perms}}
+  </div>
+</div>
+
+{% endblock %}
