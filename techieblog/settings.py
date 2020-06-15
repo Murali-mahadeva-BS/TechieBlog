@@ -195,9 +195,9 @@ SUMMERNOTE_THEME = 'bs4'
 # s3_client = boto3.client('s3', region_name='ap-south-1')
 
 
-# AWS_S3_SIGNATURE_VERSION = "s3v4"
+AWS_S3_SIGNATURE_VERSION = "s3v4"
 
-# AWS_S3_REGION_NAME = "ap-south-1"
+AWS_S3_REGION_NAME = "ap-south-1"
 
 # AWS_LOCATION = "ap-south-1"
 #S3 configs
