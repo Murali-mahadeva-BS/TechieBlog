@@ -195,11 +195,12 @@ SUMMERNOTE_THEME = 'bs4'
 # s3_client = boto3.client('s3', region_name='ap-south-1')
 
 
-AWS_S3_SIGNATURE_VERSION = "s3v4"
+# AWS_S3_SIGNATURE_VERSION = "s3v4"
 
-AWS_S3_REGION_NAME = "ap-south-1"
+# AWS_S3_REGION_NAME = "ap-south-1"
 
 # AWS_LOCATION = "ap-south-1"
+
 #S3 configs
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACESS_KEY=  os.environ.get('AWS_SECRET_ACESS_KEY')
@@ -207,7 +208,7 @@ AWS_STORAGE_BUCKET_NAME=os.environ.get('AWS_STORAGE_BUCKET_NAME')
 
 # AWS_ACCESS_KEY_ID="AKIA3VLPDD6WBEBJ2JCP"
 # AWS_SECRET_ACCESS_KEY="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"  
-# AWS_STORAGE_BUCKET_NAME="techieblog-files"
+# AWS_STORAGE_BUCKET_NAME="techieblog-media"
 
 
 AWS_S3_FILE_OVERWRITE = False
