@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import django_on_heroku
+import boto3
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,11 +26,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG')
+
 # DEBUG = 1
 ALLOWED_HOSTS = ['techie-explorer.herokuapp.com','localhost', '127.0.0.1:8000']
 
 ENVIRONMENT = os.environ.get('ENVIRONMENT')
 # ENVIRONMENT = 'development'
+'''
 if ENVIRONMENT == 'production':
     SECURE_BROWSER_XSS_FILTER = True  # new
     SECURE_SSL_REDIRECT = True  # new
@@ -41,7 +44,7 @@ if ENVIRONMENT == 'production':
     CSRF_COOKIE_SECURE = True  # new
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')  # new
 # Application definition
-
+'''
 INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'crispy_forms',  # new
@@ -55,6 +58,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'storages',
 
 ]
 
@@ -187,5 +191,28 @@ SUMMERNOTE_THEME = 'bs4'
 # CACHE_MIDDLEWARE_ALIAS = 'default'
 # CACHE_MIDDLEWARE_SECONDS = 604800
 # CACHE_MIDDLEWARE_KEY_PREFIX = ''
+
+# s3_client = boto3.client('s3', region_name='ap-south-1')
+
+
+# AWS_S3_SIGNATURE_VERSION = "s3v4"
+
+# AWS_S3_REGION_NAME = "ap-south-1"
+
+# AWS_LOCATION = "ap-south-1"
+#S3 configs
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACESS_KEY=  os.environ.get('AWS_SECRET_ACESS_KEY')
+AWS_STORAGE_BUCKET_NAME=os.environ.get('AWS_STORAGE_BUCKET_NAME')
+
+# AWS_ACCESS_KEY_ID="AKIA3VLPDD6WBEBJ2JCP"
+# AWS_SECRET_ACCESS_KEY="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"  
+# AWS_STORAGE_BUCKET_NAME="techieblog-files"
+
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 
 django_on_heroku.settings(locals())
