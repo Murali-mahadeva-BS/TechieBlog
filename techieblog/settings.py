@@ -22,13 +22,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'n*3-k_5xx7vh*iyw(i7%rue_8d_zyva)u!dav8*uudrt5jp3()'
 SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG')
 
 # DEBUG = 1
-ALLOWED_HOSTS = ['techie-explorer.herokuapp.com','localhost', '127.0.0.1:8000']
+ALLOWED_HOSTS = ['techie-explorer.herokuapp.com',
+                 'localhost', '127.0.0.1:8000']
 
 ENVIRONMENT = os.environ.get('ENVIRONMENT')
 # ENVIRONMENT = 'development'
@@ -62,7 +62,7 @@ INSTALLED_APPS = [
 
 ]
 
-SITE_ID = 1 #djnago-allauth
+SITE_ID = 1  # djnago-allauth
 MIDDLEWARE = [
     # 'django.middleware.cache.UpdateCacheMiddleware', # new
     'django.middleware.security.SecurityMiddleware',
@@ -187,28 +187,15 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'  # for summernote
 SUMMERNOTE_THEME = 'bs4'
 
 
-#cache settings
+# cache settings
 # CACHE_MIDDLEWARE_ALIAS = 'default'
 # CACHE_MIDDLEWARE_SECONDS = 604800
 # CACHE_MIDDLEWARE_KEY_PREFIX = ''
 
-# s3_client = boto3.client('s3', region_name='ap-south-1')
-
-
-# AWS_S3_SIGNATURE_VERSION = "s3v4"
-
-# AWS_S3_REGION_NAME = "ap-south-1"
-
-# AWS_LOCATION = "ap-south-1"
-
-#S3 configs
+# S3 configs
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACESS_KEY=  os.environ.get('AWS_SECRET_ACESS_KEY')
-AWS_STORAGE_BUCKET_NAME=os.environ.get('AWS_STORAGE_BUCKET_NAME')
-
-# AWS_ACCESS_KEY_ID="AKIA3VLPDD6WBEBJ2JCP"
-# AWS_SECRET_ACCESS_KEY="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"  
-# AWS_STORAGE_BUCKET_NAME="techieblog-media"
+AWS_SECRET_ACESS_KEY = os.environ.get('AWS_SECRET_ACESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 
 
 AWS_S3_FILE_OVERWRITE = False
